@@ -1,4 +1,5 @@
-import { Point } from './point';
+import { update } from './core/game-loop';
+import { Point } from './physics/point';
 import './style.css';
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement | null;
@@ -31,31 +32,62 @@ const pointHeight = 10;
 let oldY: number;
 
 // Parameters
+const FPS = 60;
 const g = 9.81;
 const a = g;
 let v = 0;
-const frameMs = 10;
-const dt = frameMs / 1000;
+const FRAME_INTERVAL_MS = 1000 / FPS;
+const dt = FRAME_INTERVAL_MS / 1000;
 
-function calculatePosition(point: Point) {
+export function updatePhysics() {
   oldY = point.y;
   v += a;
   point.y = point.y + v * dt + 0.5 * a * dt * dt;
 }
 
-function render(point: Point) {
-  calculatePosition(point);
+export function draw(ctx: CanvasRenderingContext2D) {
+  updatePhysics();
   ctx.clearRect(point.x, oldY, pointWidth, pointHeight);
   ctx.fillRect(point.x, point.y, pointWidth, pointHeight);
 }
-
-setInterval(() => {
-  render(point);
-}, frameMs);
 
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth - canvasOffsetX;
   canvas.height = window.innerHeight - canvasOffsetY;
 });
 
+update();
+// function update() {
+//   requestAnimationFrame((currentTimeMs) => {
+//     const deltaTimeMs = currentTimeMs - previousTimeMs;
+
+//     if (deltaTimeMs >= FRAME_INTERVAL_MS) {
+//       updatePhysics();
+//       previousTimeMs = currentTimeMs - (deltaTimeMs % FRAME_INTERVAL_MS);
+//     }
+
+//     // often desirable to redraw even though it's not every physics update
+//     draw();
+//     update();
+//   });
+// }
+
 // calculate new cords and old cords, remove old point, draw new point, repeat
+// create game loop (60fps)
+// create points, links and fixed points,
+// add constraints
+//
+
+// Useful
+// const pressedKeys = new Set();
+// const isKeyDown = (key) => pressedKeys.has(key);
+// document.addEventListener('keydown', (e) => pressedKeys.add(e.key));
+// document.addEventListener('keyup', (e) => pressedKeys.delete(e.key));
+
+// function updatePhysics() {
+//   if (isKeyDown('ArrowLeft')) {
+//     player.moveLeft();
+//   }
+// }
+
+// https://www.aleksandrhovhannisyan.com/blog/javascript-game-loop/
