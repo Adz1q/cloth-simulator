@@ -40,7 +40,7 @@ Built from scratch with TypeScript and HTML5 Canvas API to demonstrate numerical
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/adz1q/cloth-simulator.git](https://github.com/adz1q/cloth-simulator.git)
+git clone https://github.com/adz1q/cloth-simulator.git
 ```
 
 
