@@ -13,7 +13,6 @@ class Application {
     this.mouse = new Mouse(this.renderer.getCanvas());
     this.physicsLoop = new PhysicsLoop(this.renderer, this.mouse);
 
-    // Initial cloth state
     this.physicsLoop.reset();
 
     this.setupKeyboard();
@@ -25,7 +24,7 @@ class Application {
   private setupKeyboard(): void {
     window.addEventListener('keydown', (event) => {
       if (event.code === 'Space') {
-        event.preventDefault(); // prevent scrolling
+        event.preventDefault();
         this.physicsLoop.reset();
       }
     });
@@ -45,7 +44,6 @@ class Application {
   }
 }
 
-// Bootstrap
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new Application());
 } else {

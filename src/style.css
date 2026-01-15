@@ -25,7 +25,6 @@ canvas {
   outline: none;
 }
 
-/* Overlay UI */
 .instructions {
   position: absolute;
   top: 50px;
@@ -35,7 +34,6 @@ canvas {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   
-  /* UX: Allow clicks to pass through the text to the canvas below */
   pointer-events: none;
   user-select: none;
   
