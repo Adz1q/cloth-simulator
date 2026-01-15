@@ -1,13 +1,28 @@
 <!doctype html>
-<html lang="pl-PL">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
     <title>Cloth Simulator</title>
+    <meta name="description" content="Deterministic cloth simulation using Verlet integration on HTML5 Canvas." />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <link rel="modulepreload" href="/src/main.ts" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <style>
+      body { margin: 0; background: #ffffff; overflow: hidden; }
+      canvas { display: block; }
+    </style>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
     <script type="module" src="/src/main.ts"></script>
+    
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+        JavaScript is required to run this simulation.
+      </div>
+    </noscript>
   </body>
 </html>
